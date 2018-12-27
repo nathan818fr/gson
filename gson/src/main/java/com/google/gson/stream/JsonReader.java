@@ -1555,6 +1555,9 @@ public class JsonReader implements Closeable {
     case '/':	
     	return escaped;
     default:
+        if (lenient) {
+          return escaped;
+        }
     	// throw error when none of the above cases are matched
     	throw syntaxError("Invalid escape sequence");
     }
